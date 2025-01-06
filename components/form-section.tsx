@@ -10,9 +10,6 @@ export const FormSection = ({ blok: { title } }: any) => {
     email: "",
     phone: "",
     message: "",
-    birthday: "",
-    date: "",
-    tid: "",
   });
 
   const handleChange = (e: any) => {
