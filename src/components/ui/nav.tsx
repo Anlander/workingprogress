@@ -25,7 +25,7 @@ export const Nav = ({ settings }: NavProps) => {
     <>
       <button
         onClick={handleOpen}
-        className="bg-white z-50 rounded-full p-2 m-4 absolute right-2 block lg:hidden "
+        className="bg-white z-50 rounded-full p-2 m-4 fixed right-2 block lg:hidden "
       >
         {open ? (
           <IoClose color="#172D32" fontSize={30} />
@@ -34,7 +34,7 @@ export const Nav = ({ settings }: NavProps) => {
         )}
       </button>
       <div
-        className={`absolute h-[100vh] right-0 top-0 w-full bg-[#3d52a0] transition-all duration-300 z-30 lg:hidden flex flex-col p-10 ${
+        className={`fixed h-[100vh] right-0 top-0 w-full bg-[#3d52a0] transition-all duration-300 z-30 lg:hidden flex flex-col p-10 ${
           !open ? "translate-x-full" : "translate-x-0"
         } `}
       >
