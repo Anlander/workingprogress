@@ -1,0 +1,135 @@
+@import url("https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+$bg: #3d52a0;
+$small-grey: #8597c4;
+$lighther-blue: #adbbda;
+$text-color: #ede8f5;
+
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+footer {
+  background-color: $bg;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+}
+
+h1,
+h2,
+button {
+  font-family: "Cabin", serif;
+}
+
+.button {
+  font-size: 16px;
+  padding: 5px 15px;
+  border-radius: 9px;
+  background: $bg;
+  color: white;
+  cursor: pointer;
+}
+
+h3,
+h4,
+h5,
+p,
+a,
+span {
+  font-family: "Raleway", serif;
+  letter-spacing: 0.5px;
+}
+
+h1 {
+  font-size: 55px;
+  line-height: 60px;
+  @media screen and (max-width: 768px) {
+    font-size: 32px;
+    line-height: 45px;
+  }
+}
+
+.mobile {
+  p {
+    font-size: 14px;
+    padding: 0 10px;
+  }
+}
+
+h4 {
+  font-size: 16px;
+}
+
+p {
+  font-size: 20px;
+}
+
+.container {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.rendered-content {
+  color: $text-color;
+  p {
+    font-size: 28px;
+    line-height: 35px;
+  }
+}
+
+.text-color {
+  color: $text-color;
+}
+
+.notActive {
+  color: $bg;
+  background-color: $lighther-blue;
+}
+
+.active {
+  color: $text-color;
+  background-color: $bg;
+}
+
+.render-content {
+  display: flex;
+  flex-direction: column;
+  color: #121212;
+  gap: 10px;
+
+  ul {
+    list-style: circle;
+
+    padding: 0;
+    margin: 0;
+    li {
+      margin: 0px 0px 5px 20px;
+    }
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  label {
+    padding: 10px 0;
+    color: $small-grey;
+  }
+  input,
+  textarea {
+    font-size: 16px;
+    border-radius: 9px;
+    padding: 10px 20px;
+    border: 1px solid $bg;
+  }
+  textarea {
+    width: 100%;
+  }
+}
