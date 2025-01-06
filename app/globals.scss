@@ -9,10 +9,31 @@ $small-grey: #8597c4;
 $lighther-blue: #adbbda;
 $text-color: #ede8f5;
 
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+footer {
+  background-color: $bg;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+}
+
 h1,
 h2,
 button {
   font-family: "Cabin", serif;
+}
+
+.button {
+  font-size: 16px;
+  padding: 5px 15px;
+  border-radius: 9px;
+  background: $bg;
+  color: white;
+  cursor: pointer;
 }
 
 h3,
@@ -28,6 +49,17 @@ span {
 h1 {
   font-size: 55px;
   line-height: 60px;
+  @media screen and (max-width: 768px) {
+    font-size: 32px;
+    line-height: 45px;
+  }
+}
+
+.mobile {
+  p {
+    font-size: 14px;
+    padding: 0 10px;
+  }
 }
 
 h4 {
@@ -79,5 +111,25 @@ p {
     li {
       margin: 0px 0px 5px 20px;
     }
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  label {
+    padding: 10px 0;
+    color: $small-grey;
+  }
+  input,
+  textarea {
+    font-size: 16px;
+    border-radius: 9px;
+    padding: 10px 20px;
+    border: 1px solid $bg;
+  }
+  textarea {
+    width: 100%;
   }
 }

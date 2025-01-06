@@ -1,5 +1,5 @@
 import { getData } from "@/data/get-data";
-import { getStoryblokApi, StoryblokStory } from "@storyblok/react/rsc";
+import { StoryblokStory } from "@storyblok/react/rsc";
 
 const Page = async ({ params }: { params: { slug: string } }) => {
   const pathname = params.slug;

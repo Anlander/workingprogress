@@ -6,6 +6,7 @@ import { Teaser } from "@/components/Teaser";
 import { HeroSection } from "@/components/hero-section";
 import { TableSection } from "@/components/table-section";
 import { ContentSection } from "@/components/content-section";
+import { FormSection } from "./form-section";
 
 storyblokInit({
   components: {
@@ -14,6 +15,7 @@ storyblokInit({
     hero: HeroSection,
     table: TableSection,
     content: ContentSection,
+    form: FormSection,
   },
   enableFallbackComponent: true,
 });

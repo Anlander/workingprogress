@@ -17,7 +17,10 @@ interface HeroSectionProps {
 
 export const HeroSection = ({ blok }: HeroSectionProps) => {
   return (
-    <div className="h-[80vh] flex items-center relative" {...storyblokEditable}>
+    <div
+      className="h-full py-14 lg:py-0 lg:h-[80vh] flex items-center relative"
+      {...storyblokEditable}
+    >
       <div className="absolute top-0 h-full w-full bg-[#3d52a0] opacity-80 z-10" />
       <Image
         src={blok.bg?.filename}
@@ -30,7 +33,7 @@ export const HeroSection = ({ blok }: HeroSectionProps) => {
           <h1 className="lg:max-w-[80%] 2xl:max-w-[60%] flex text-white">
             {blok.title}
           </h1>
-          <h3 className="text-2xl max-w-[50%] flex rendered-content">
+          <h3 className="lg:text-2xl max-w-[50%] flex rendered-content">
             {render(blok.subtitle)}
           </h3>
         </div>

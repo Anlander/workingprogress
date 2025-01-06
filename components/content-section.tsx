@@ -10,12 +10,14 @@ interface ContentSectionProps {
 
 export const ContentSection = ({ blok }: ContentSectionProps) => {
   return (
-    <div className="py-20 bg-[white]">
+    <div className="py-10 lg:py-20 bg-[white]" id="bakgrund">
       <div className="flex container flex-col gap-5 ">
-        <h4 className="text-md uppercase font-bold pt-14 tracking-wider text-[#8597c4]">
+        <h4 className="text-md uppercase font-bold pt-0 lg:pt-14 tracking-wider text-[#8597c4]">
           {blok.title}
         </h4>
-        <p className="text-4xl max-w-[80%] leading-[45px]">{blok.sub_content}</p>
+        <p className="text-xl lg:text-4xl lg:max-w-[80%] lg:leading-[45px]">
+          {blok.sub_content}
+        </p>
         <span className="render-content">{render(blok.content)}</span>
       </div>
     </div>

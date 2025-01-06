@@ -24,13 +24,16 @@ export const TableSection = ({ blok }: TableSectionProps) => {
   const [data, setData] = useState(0);
 
   return (
-    <div className="flex flex-col mx-auto justify-center bg-[#ede8f5] items-center ">
+    <div
+      className="flex flex-col mx-auto justify-center lg:pt-14 lg:pb-20 bg-[#ede8f5] items-center"
+      id="services"
+    >
       {blok.title && (
         <h4 className="text-md uppercase font-bold pt-14 tracking-wider text-[#3d52a0]">
           {blok.title}
         </h4>
       )}
-      <div className="w-full justify-center items-center flex flex-col gap-5 mx-auto py-14">
+      <div className="w-full justify-center items-center flex flex-col gap-5 mx-auto py-5 lg:py-14">
         <div className="flex justify-center">
           {blok.fields.map((item: TableItem, index: number) => {
             const Icons = () => {
@@ -50,12 +53,12 @@ export const TableSection = ({ blok }: TableSectionProps) => {
             return data === index ? <Icons key={index} /> : null;
           })}
         </div>
-        <div className="flex gap-5">
+        <div className="flex gap-2 lg:gap-5 flex-col lg:flex-row">
           {blok.fields.map((item: TableItem, index: number) => {
             return (
-              <div className="flex flex-col  gap-20 mb-4" key={index}>
+              <div className="flex flex-col gap-5 lg:gap-20 mb-4" key={index}>
                 <button
-                  className={`text-left px-5 rounded-md py-2 ${
+                  className={`text-center lg:text-left px-5 rounded-md py-2 ${
                     index === data ? "active" : "notActive"
                   }`}
                   onClick={() => setData(index)}
@@ -68,7 +71,9 @@ export const TableSection = ({ blok }: TableSectionProps) => {
         </div>
         {blok.fields.map((item: TableItem, index: number) => {
           return data === index ? (
-            <span className="text-center">{render(item.content)}</span>
+            <span className="text-center mobile" key={index}>
+              {render(item.content)}
+            </span>
           ) : null;
         })}
       </div>

@@ -3,6 +3,7 @@ import { storyblokInit, apiPlugin } from "@storyblok/react/rsc";
 import "./globals.scss";
 import { StoryblokProvider } from "../components/StoryblokProvider";
 import { Header } from "@/components/ui/header";
+import { Footer } from "@/components/ui/footer";
 
 export const metadata: Metadata = {
   title: "WorkingProgress",
@@ -36,6 +37,7 @@ export default function RootLayout({
         <body>
           <Header />
           {children}
+          <Footer />
         </body>
       </html>
     </StoryblokProvider>
