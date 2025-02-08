@@ -9,7 +9,7 @@ import { render } from "storyblok-rich-text-react-renderer";
 
 interface TableItem {
   title: string;
-  content: React.ReactNode;
+  content: any;
   icon: string;
 }
 

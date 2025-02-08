@@ -1,7 +1,7 @@
-import { fetchSettings } from "@/app/data/fetch-settings";
+import { getSettings } from "@/data/get-settings";
 import { Nav } from "./nav";
 
 export const Header = async () => {
-  const settings = await fetchSettings();
+  const settings = await getSettings();
   return <Nav settings={settings.data.data.story.content} />;
 };
