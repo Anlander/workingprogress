@@ -4,13 +4,18 @@ interface ContentSectionProps {
   blok: {
     title: string;
     sub_content: string;
-    content: React.ReactNode;
+    content: any;
   };
 }
 
 export const ContentSection = ({ blok }: ContentSectionProps) => {
   return (
-    <div className="py-10 lg:py-20 bg-[white]" id="bakgrund">
+    <div
+      className={`py-10 ${
+        !blok.sub_content ? "lg:py-6" : "lg:py-20"
+      } bg-[white]`}
+      id={blok.title.toLowerCase()}
+    >
       <div className="flex container flex-col gap-5 ">
         <h4 className="text-md uppercase font-bold pt-0 lg:pt-14 tracking-wider text-[#8597c4]">
           {blok.title}

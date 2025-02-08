@@ -1,5 +1,3 @@
-"use server";
-
 import { getStoryblokApi } from "@storyblok/react";
 
 export async function getSettings() {

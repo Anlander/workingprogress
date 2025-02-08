@@ -1,7 +1,7 @@
 import { Resend } from "resend";
 
 const usermail = process.env.MARKNAD_EMAIL;
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend("re_Kj5o8m5t_DDUhMTapehHYojfacuggugKz");
 
 export async function POST(req: Request) {
   const { name, email, message, phone } = await req.json();

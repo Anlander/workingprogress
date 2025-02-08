@@ -1,11 +1,11 @@
 "use client";
 import type { PropsWithChildren } from "react";
 import { storyblokInit } from "@storyblok/react/rsc";
-import Page from "@/components/Page";
-import { Teaser } from "@/components/Teaser";
-import { HeroSection } from "@/components/hero-section";
-import { TableSection } from "@/components/table-section";
-import { ContentSection } from "@/components/content-section";
+import Page from "@/src/components/Page";
+import { Teaser } from "@/src/components/Teaser";
+import { HeroSection } from "@/src/components/hero-section";
+import { TableSection } from "@/src/components/table-section";
+import { ContentSection } from "@/src/components/content-section";
 import { FormSection } from "./form-section";
 
 storyblokInit({

@@ -11,14 +11,15 @@ interface HeroSectionProps {
       filename: string;
       alt: string;
     };
-    buttons: {};
   };
 }
 
 export const HeroSection = ({ blok }: HeroSectionProps) => {
   return (
     <div
-      className="h-full py-14 lg:py-0 lg:h-[80vh] flex items-center relative"
+      className={`h-full py-14 lg:py-0 ${
+        blok.content ? "lg:h-[80vh]" : "lg:h-[60vh] lg:pt-20"
+      } flex items-center relative`}
       {...storyblokEditable}
     >
       <div className="absolute top-0 h-full w-full bg-[#3d52a0] opacity-80 z-10" />
@@ -33,9 +34,11 @@ export const HeroSection = ({ blok }: HeroSectionProps) => {
           <h1 className="lg:max-w-[80%] 2xl:max-w-[60%] flex text-white">
             {blok.title}
           </h1>
-          <h3 className="lg:text-2xl max-w-[50%] flex rendered-content">
-            {render(blok.subtitle)}
-          </h3>
+          {blok.subtitle && (
+            <h3 className="lg:text-2xl max-w-[50%] flex rendered-content">
+              {render(blok.subtitle)}
+            </h3>
+          )}
         </div>
         {blok.content && (
           <p className="lg:max-w-[80%] 2xl:max-w-[50%] flex text-color">

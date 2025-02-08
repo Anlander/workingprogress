@@ -103,6 +103,14 @@ p {
   color: #121212;
   gap: 10px;
 
+  a {
+    color: $lighther-blue;
+    transition: all 300ms ease-in-out;
+    &:hover {
+      color: $bg;
+    }
+  }
+
   ul {
     list-style: circle;
 

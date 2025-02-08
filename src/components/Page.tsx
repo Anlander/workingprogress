@@ -4,7 +4,7 @@ const Page = ({ blok }: any) => (
   <div {...storyblokEditable(blok)}>
     {blok &&
       Array.isArray(blok.body) &&
-      blok.body.map((nestedBlok: any, index: number) => (
+      blok.body.map((nestedBlok: any) => (
         <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
       ))}
   </div>
