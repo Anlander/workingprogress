@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { storyblokInit, apiPlugin } from "@storyblok/react/rsc";
+import { StoryblokProvider } from "@/components/StoryblokProvider";
 import "./globals.scss";
-import { StoryblokProvider } from "../components/StoryblokProvider";
-import { Header } from "@/src/components/ui/header";
-import { Footer } from "@/src/components/ui/footer";
+import { Header } from "@/components/ui/header";
+import { Footer } from "@/components/ui/footer";
 
 export const metadata: Metadata = {
-  title: "WorkingProgress",
+  title: "Working Progress",
   description:
     "Vi stärker din arbetsplats – med insikt, engagemang och transparens.",
 };
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const cachedFetch = (input: any, init?: any): Promise<Response> => {
   return fetch(input, {
     ...init,
-    cache: process.env.NODE_ENV === "development" && "no-store",
+    cache: "no-store",
   });
 };
 

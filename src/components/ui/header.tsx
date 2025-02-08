@@ -1,4 +1,4 @@
-import { getSettings } from "@/src/data/get-settings";
+import { getSettings } from "@/data/get-settings";
 import { Nav } from "./nav";
 
 export const Header = async () => {
