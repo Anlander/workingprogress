@@ -11,10 +11,6 @@ interface HeroSectionProps {
       filename: string;
       alt: string;
     };
-<<<<<<< HEAD
-=======
-    buttons: {};
->>>>>>> 03883d871fc7c4b6f7847a72877c0f8468630029
   };
 }
 

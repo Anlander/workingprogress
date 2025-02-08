@@ -4,11 +4,7 @@ interface ContentSectionProps {
   blok: {
     title: string;
     sub_content: string;
-<<<<<<< HEAD
     content: any;
-=======
-    content: React.ReactNode;
->>>>>>> 03883d871fc7c4b6f7847a72877c0f8468630029
   };
 }
 
