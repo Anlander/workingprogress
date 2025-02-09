@@ -50,8 +50,8 @@ export const Nav = ({ settings }: NavProps) => {
         )}
       </button>
       <div
-        className={`absolute h-[100vh] right-0 top-0 w-full bg-[#3d52a0] transition-all duration-300 z-30 lg:hidden flex flex-col p-10 ${
-          !open ? "translate-x-full" : "translate-x-0"
+        className={`absolute h-[100vh] right-0 w-full top-0 bg-[#3d52a0] transition-all duration-300 z-30 lg:hidden flex-col p-10 ${
+          !open ? "translate-x-full hidden" : "translate-x-0 flex"
         } `}
       >
         <Link href="/">
@@ -63,11 +63,20 @@ export const Nav = ({ settings }: NavProps) => {
           />
         </Link>
         <div className="flex flex-col gap-2 mt-10 text-white text-xl">
+          <Link onClick={handleOpen} href="/koncept">
+            Koncept
+          </Link>
+          <Link onClick={handleOpen} href="/foerbaettra-ditt-employer-branding">
+            Employer Branding
+          </Link>
+          <Link onClick={handleOpen} href="/pitch">
+            Varför oss?
+          </Link>
           <Link onClick={handleOpen} href="/#bakgrund">
             Bakgrund
           </Link>
           <Link onClick={handleOpen} href="/#services">
-            Vad vi kan hjälpa er med?
+            Tjänster
           </Link>
           <Link onClick={handleOpen} href="/#form">
             Kontakta oss
@@ -95,7 +104,9 @@ export const Nav = ({ settings }: NavProps) => {
             } gap-5 font-semibold uppercase lg:text-[#ede8f5]`}
           >
             <Link href="/koncept">Koncept</Link>
-            <Link href="/foerbaettra-ditt-employer-branding">Employer Branding</Link>
+            <Link href="/foerbaettra-ditt-employer-branding">
+              Employer Branding
+            </Link>
             <Link href="/pitch">Varför oss?</Link>
             <Link href="/#bakgrund">Bakgrund</Link>
             <Link href="/#services">Tjänster</Link>
