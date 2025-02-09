@@ -18,7 +18,7 @@ export const HeroSection = ({ blok }: HeroSectionProps) => {
   return (
     <div
       className={`h-full py-14 lg:py-0 ${
-        blok.content ? "lg:h-[80vh]" : "lg:h-[60vh] lg:pt-20"
+        blok.content ? "lg:h-full" : "lg:h-[80vh] lg:pt-20"
       } flex items-center relative`}
       {...storyblokEditable}
     >
@@ -29,7 +29,7 @@ export const HeroSection = ({ blok }: HeroSectionProps) => {
         alt={blok?.bg?.alt}
         className="object-cover"
       />
-      <div className="container flex flex-col gap-2 z-20">
+      <div className="container flex flex-col gap-2 z-20 lg:py-56">
         <div className="flex flex-col gap-5">
           <h1 className="lg:max-w-[80%] 2xl:max-w-[60%] flex text-white">
             {blok.title}
