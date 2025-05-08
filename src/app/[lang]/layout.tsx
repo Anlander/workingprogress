@@ -28,14 +28,16 @@ storyblokInit({
 
 export default function RootLayout({
   children,
+  params: { lang }
 }: {
   children: React.ReactNode;
+  params: { lang: string };
 }) {
   return (
     <StoryblokProvider>
-      <html lang="sv">
+      <html lang={lang}>
         <body>
-          <Header />
+          <Header locale={lang} />
           {children}
           <Footer />
         </body>

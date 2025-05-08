@@ -1,7 +1,7 @@
 import { getSettings } from "@/data/get-settings";
 import { Nav } from "./nav";
 
-export const Header = async () => {
+export const Header = async (locale: string) => {
   const settings = await getSettings();
-  return <Nav settings={settings.data.data.story.content} />;
+  return <Nav settings={settings.data.data.story.content} locale={locale} />;
 };

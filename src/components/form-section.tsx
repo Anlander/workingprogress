@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 
-export const FormSection = ({ blok: { title } }: any) => {
+export const FormSection = ({ blok: { title }, locale }: any) => {
   const [sent, setSent] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -11,6 +11,7 @@ export const FormSection = ({ blok: { title } }: any) => {
     phone: "",
     message: "",
   });
+
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
@@ -61,7 +62,7 @@ export const FormSection = ({ blok: { title } }: any) => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
               <div>
                 <label htmlFor="name" className="block text-gray-700">
-                  Namn
+                  {locale === "en" ? "Name" : "Namn"}
                 </label>
                 <input
                   id="name"
@@ -74,7 +75,7 @@ export const FormSection = ({ blok: { title } }: any) => {
 
               <div>
                 <label htmlFor="phone" className="block text-gray-700">
-                  Telefon
+                  {locale === "en" ? "Phone" : "Telefonnummer"}
                 </label>
                 <input
                   id="phone"
@@ -87,7 +88,7 @@ export const FormSection = ({ blok: { title } }: any) => {
             </div>
             <div>
               <label htmlFor="email" className="block text-gray-700">
-                E-post
+                {locale === "en" ? "Email" : "E-post"}
               </label>
               <input
                 id="email"
@@ -101,7 +102,7 @@ export const FormSection = ({ blok: { title } }: any) => {
             </div>
             <div>
               <label htmlFor="message" className="block text-gray-700">
-                Meddelande
+                {locale === "en" ? "Message" : "Meddelande"}
               </label>
               <textarea
                 id="message"
@@ -118,11 +119,18 @@ export const FormSection = ({ blok: { title } }: any) => {
                 htmlFor="terms"
                 className="terms flex flex-col text-gray-600"
               >
-                Jag godkänner att ni hanterar mina personuppgifter enligt ovan.
+                {locale === "en"
+                  ? "I agree to the processing of my personal data in accordance with the Privacy Policy."
+                  : "Jag godkänner behandling av mina personuppgifter i enlighet med integritetspolicyn."}
+                <span className="text-sm text-gray-600">
+                  {locale === "en"
+                    ? "Read more about our Privacy Policy here."
+                    : "Läs mer om vår integritetspolicy här."}
+                </span>
               </label>
             </div>
             <div>
-              <button className="button mt-5">Skicka</button>
+              <button className="button mt-5">{locale === "sv" ? "Skicka" : "Send"}</button>
             </div>
           </form>
         )}
