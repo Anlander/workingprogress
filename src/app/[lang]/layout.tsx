@@ -31,7 +31,7 @@ export default function RootLayout({
   params: { lang }
 }: {
   children: React.ReactNode;
-  params: { lang: string };
+  params: { lang: any };
 }) {
   return (
     <StoryblokProvider>
