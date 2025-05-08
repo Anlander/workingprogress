@@ -55,7 +55,7 @@ export const Nav = ({ settings, locale }: NavProps) => {
         className={`absolute h-[100vh] right-0 w-full top-0 bg-[#3d52a0] transition-all duration-300 z-30 lg:hidden flex-col p-10 ${!open ? "translate-x-full hidden" : "translate-x-0 flex"
           } `}
       >
-        <Link href={`/${locale.locale}`}>
+        <Link onClick={handleOpen} href={`/${locale.locale}`}>
           <Image
             src={settings?.logo?.filename || ""}
             width={100}
@@ -64,17 +64,26 @@ export const Nav = ({ settings, locale }: NavProps) => {
           />
         </Link>
         <div className="flex flex-col gap-2 mt-10 text-white text-xl">
-          <Link href={`/${locale.locale}/koncept`}>
-            Koncept
+          <Link onClick={handleOpen} href={`/${locale.locale}/koncept`}>
+            {locale.locale === "sv" ? "Koncept" : "Concept"}
           </Link>
 
-          <Link href={`/${locale.locale}/foerbaettra-ditt-employer-branding`}>
+          <Link onClick={handleOpen} href={`/${locale.locale}/foerbaettra-ditt-employer-branding`}>
             Employer Branding
           </Link>
-          <Link href={`/${locale.locale}/pitch`}>Varför oss?</Link>
-          <Link href={`/${locale.locale}/#bakgrund`}>Bakgrund</Link>
-          <Link href={`/${locale.locale}/#services`}>Tjänster</Link>
-          <Link href={`/${locale.locale}/#form`}>Kontakta oss</Link>
+          <Link onClick={handleOpen} href={`/${locale.locale}/pitch`}>{locale.locale === "sv" ? "Varför oss?" : "Why us"}</Link>
+          <Link onClick={handleOpen} href={`/${locale.locale}/#bakgrund`}>{locale.locale === "sv" ? "Bakgrund" : "Background"}</Link>
+          <Link onClick={handleOpen} href={`/${locale.locale}/#services`}>{locale.locale === "sv" ? "Tjänster" : "Services"}</Link>
+          <Link onClick={handleOpen} href={`/${locale.locale}/#form`}>{locale.locale === "sv" ? "Kontakta oss" : "Contact us"}</Link>
+          <div className="flex gap-2 items-center">
+            <Link href="/sv" onClick={handleOpen} className="flex text-[#fff] medium text-[20px]">
+              SV
+            </Link>
+            <span className="text-[#fff]">|</span>
+            <Link href="/en" className="flex text-[#fff] medium text-[20px]">
+              EN
+            </Link>
+          </div>
         </div>
       </div>
       <div
