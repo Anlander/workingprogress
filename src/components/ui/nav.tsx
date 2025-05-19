@@ -76,12 +76,11 @@ export const Nav = ({ settings, locale }: NavProps) => {
           <Link onClick={handleOpen} href={`/${locale.locale}/#services`}>{locale.locale === "sv" ? "Tjänster" : "Services"}</Link>
           <Link onClick={handleOpen} href={`/${locale.locale}/#form`}>{locale.locale === "sv" ? "Kontakta oss" : "Contact us"}</Link>
           <div className="flex gap-2 items-center">
-            <Link href="/sv" onClick={handleOpen} className="flex text-[#fff] medium text-[20px]">
-              SV
+            <Link onClick={handleOpen} href="/sv" className="flex text-[#fff] medium text-[20px]">
+              <Image src="https://a.storyblok.com/f/318037/1600x1000/84f5e65ba6/sweden.svg" width={40} height={40} alt="sweden" />
             </Link>
-            <span className="text-[#fff]">|</span>
-            <Link href="/en" className="flex text-[#fff] medium text-[20px]">
-              EN
+            <Link href="/en" onClick={handleOpen} className="flex text-[#fff] medium text-[20px]">
+              <Image src="https://a.storyblok.com/f/318037/330x165/e463380fe6/flag_of_the_united_kingdom-svg.webp" width={45} height={50} alt="sweden" />
             </Link>
           </div>
         </div>
@@ -117,11 +116,10 @@ export const Nav = ({ settings, locale }: NavProps) => {
             <Link href={`/${locale.locale}/#form`}>{locale.locale === "sv" ? "Kontakta oss" : "Contact us"}</Link>
             <div className="flex gap-2 items-center">
               <Link href="/sv" className="flex text-[#fff] medium text-[20px]">
-                SV
+                <Image src="https://a.storyblok.com/f/318037/1600x1000/84f5e65ba6/sweden.svg" width={40} height={40} alt="sweden" />
               </Link>
-              <span className="text-[#fff]">|</span>
               <Link href="/en" className="flex text-[#fff] medium text-[20px]">
-                EN
+                <Image src="https://a.storyblok.com/f/318037/330x165/e463380fe6/flag_of_the_united_kingdom-svg.webp" width={45} height={50} alt="sweden" />
               </Link>
             </div>
           </div>

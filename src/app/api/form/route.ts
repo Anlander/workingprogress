@@ -1,7 +1,7 @@
 import { Resend } from "resend";
 
 const usermail = process.env.MARKNAD_EMAIL;
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.RESEND_API);
 
 export async function POST(req: Request) {
   const { name, email, message, phone } = await req.json();
@@ -10,15 +10,15 @@ export async function POST(req: Request) {
     <div style="background-color: #f9f9f9; padding: 20px;">
       <p>Meddelande från: ${name}</p>
       <h3>Email: ${email}</h3>
-      <p>Tel: ${phone}</p>
+      <p>tel: ${phone}</p>
       <p>Meddelande: ${message}</p>
     </div>
   `;
   try {
     const { data, error } = await resend.emails.send({
-      from: "Notifikation Kontakt Form <onboarding@resend.dev>",
+      from: "Kontakt <onboarding@resend.dev>",
       to: [`${usermail}`],
-      subject: `Notifikation: Kund ${name}`,
+      subject: `Notifikation Kund ${name}`,
       html: messageBody,
     });
 
