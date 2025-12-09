@@ -11,13 +11,12 @@ interface ContentSectionProps {
 export const ContentSection = ({ blok }: ContentSectionProps) => {
   return (
     <div
-      className={`py-10 ${
-        !blok.sub_content ? "lg:py-6" : "lg:py-20"
-      } bg-[white]`}
+      className={`py-5 ${!blok.sub_content ? "lg:py-6" : "lg:py-14"
+        } bg-[white]`}
       id={blok.title.toLowerCase()}
     >
-      <div className="flex container flex-col gap-5 ">
-        <h4 className="text-md uppercase font-bold pt-0 lg:pt-14 tracking-wider text-[#8597c4]">
+      <div className="flex container flex-col gap-2">
+        <h4 className="text-md uppercase font-bold pt-0 lg:pt-4 tracking-wider text-[#8597c4]">
           {blok.title}
         </h4>
         <p className="text-xl lg:text-4xl lg:max-w-[80%] lg:leading-[45px]">

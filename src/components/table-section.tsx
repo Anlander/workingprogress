@@ -1,82 +1,66 @@
 "use client";
-
-import { useState } from "react";
-import { HiRefresh } from "react-icons/hi";
-import { IoPulseSharp } from "react-icons/io5";
-import { MdBrandingWatermark } from "react-icons/md";
-import { RiTeamLine } from "react-icons/ri";
+import { Users, BarChart3, Target, Shield, Sparkles, MessageSquare } from "lucide-react";
 import { render } from "storyblok-rich-text-react-renderer";
 
-interface TableItem {
-  title: string;
-  content: any;
-  icon: string;
-}
+export function TableSection({ blok }: any) {
+  const Icons = (icon: string) => {
 
-interface TableSectionProps {
-  blok: {
-    fields: TableItem[];
-    title: string;
-  };
-}
-
-export const TableSection = ({ blok }: TableSectionProps) => {
-  const [data, setData] = useState(0);
+    switch (icon) {
+      case "Users":
+        return <Users className="w-7 h-7 text-accent" />
+      case "BarChart3":
+        return <BarChart3 className="w-7 h-7 text-accent" />
+      case "Target":
+        return <Target className="w-7 h-7 text-accent" />
+      case "Shield":
+        return <Shield className="w-7 h-7 text-accent" />
+      case "Sparkles":
+        return <Sparkles className="w-7 h-7 text-accent" />
+      case "MessageSquare":
+        return <MessageSquare className="w-7 h-7 text-accent" />
+      default:
+        return;
+    }
+  }
 
   return (
-    <div
-      className="flex flex-col mx-auto justify-center lg:pt-14 lg:pb-20 bg-[#ede8f5] items-center"
-      id="services"
-    >
-      {blok.title && (
-        <h4 className="text-md uppercase font-bold pt-14 tracking-wider text-[#3d52a0]">
-          {blok.title}
-        </h4>
-      )}
-      <div className="w-full justify-center items-center flex flex-col gap-5 mx-auto py-5 lg:py-14">
-        <div className="flex justify-center">
-          {blok.fields.map((item: TableItem, index: number) => {
-            const Icons = () => {
-              switch (item.icon) {
-                case "medarbetare":
-                  return <RiTeamLine color="#3d52a0" fontSize={200} />;
-                case "puls":
-                  return <IoPulseSharp color="#3d52a0" fontSize={200} />;
-                case "employer":
-                  return <MdBrandingWatermark color="#3d52a0" fontSize={200} />;
-                case "rekrytering":
-                  return <HiRefresh color="#3d52a0" fontSize={200} />;
-                default:
-                  return item.icon;
-              }
-            };
-            return data === index ? <Icons key={index} /> : null;
-          })}
+    <section id="tjanster" className="section-padding bg-secondary/50">
+      <div className="container">
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <span className="text-accent font-semibold text-sm uppercase tracking-wider mb-4 block">
+            Våra tjänster
+          </span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+            {blok.title}
+          </h2>
+          <p className="text-muted-foreground text-lg">
+            {blok.subtitle}
+          </p>
         </div>
-        <div className="flex gap-2 lg:gap-5 flex-col lg:flex-row">
-          {blok.fields.map((item: TableItem, index: number) => {
-            return (
-              <div className="flex flex-col gap-5 lg:gap-20 mb-4" key={index}>
-                <button
-                  className={`text-center lg:text-left px-5 rounded-md py-2 ${
-                    index === data ? "active" : "notActive"
-                  }`}
-                  onClick={() => setData(index)}
-                >
-                  {item.title}
-                </button>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {blok.fields.map((feature: any, index: number) => (
+            <div
+              key={index}
+              className="group relative bg-background rounded-2xl p-8 hover-lift border border-transparent hover:border-accent/20"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-6 transition-colors group-hover:bg-accent/20">
+                {Icons(feature.icon)}
               </div>
-            );
-          })}
+
+              <h3 className="text-xl font-semibold text-foreground mb-3 group-hover:text-accent transition-colors">
+                {feature.title}
+              </h3>
+              <span className="text-muted-foreground leading-relaxed render-content">
+                {render(feature.content)}
+              </span>
+
+              <div className="absolute bottom-0 left-8 right-8 h-0.5 bg-accent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-full" />
+            </div>
+          ))}
         </div>
-        {blok.fields.map((item: TableItem, index: number) => {
-          return data === index ? (
-            <span className="text-center mobile" key={index}>
-              {render(item.content)}
-            </span>
-          ) : null;
-        })}
       </div>
-    </div>
+    </section>
   );
-};
+}

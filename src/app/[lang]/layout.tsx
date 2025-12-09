@@ -7,8 +7,7 @@ import { Footer } from "@/components/ui/footer";
 
 export const metadata: Metadata = {
   title: "Working Progress",
-  description:
-    "Vi stärker din arbetsplats – med insikt, engagemang och transparens.",
+  description: "Vi stärker din arbetsplats – med insikt, engagemang och transparens.",
 };
 
 const cachedFetch = (input: any, init?: any): Promise<Response> => {
@@ -28,7 +27,7 @@ storyblokInit({
 
 export default function RootLayout({
   children,
-  params: { lang }
+  params: { lang },
 }: {
   children: React.ReactNode;
   params: { lang: any };
@@ -39,7 +38,7 @@ export default function RootLayout({
         <body>
           <Header locale={lang} />
           {children}
-          <Footer />
+          <Footer locale={lang} />
         </body>
       </html>
     </StoryblokProvider>

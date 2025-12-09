@@ -1,130 +1,167 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
-import { useState, useEffect } from "react";
-import { IoClose } from "react-icons/io5";
-import { LuMenu } from "react-icons/lu";
+import { useState, useEffect, useTransition } from "react";
+import { Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { useRouter, usePathname, useParams } from "next/navigation";
 
-interface NavProps {
-  locale: any
-  settings: {
-    logo: {
-      filename: string;
-    };
+export function Nav({ settings, locale }: { settings: any; locale: { locale: string } }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const path = usePathname();
+  const router = useRouter();
+  const [isPending, startTransition] = useTransition();
+
+  const setLanguage = (locale: string) => {
+    document.cookie = `NEXT_LOCALE=${locale}; path=/; max-age=${60 * 60 * 24 * 30}`;
+
+    const segments = path.split("/").filter(Boolean);
+
+    const isFirstSegmentLang = segments.length > 0 && ["sv", "en"].includes(segments[0]);
+
+    let newPath;
+    if (isFirstSegmentLang) {
+      segments[0] = locale;
+      newPath = "/" + segments.join("/");
+    } else {
+      newPath = `/${locale}${path}`;
+    }
+
+    startTransition(() => {
+      router.push(newPath);
+    });
   };
-}
 
-export const Nav = ({ settings, locale }: NavProps) => {
-  const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  const handleOpen = () => {
-    setOpen(!open);
-  };
-
+  const navLinks = [
+    {
+      href: `/koncept`,
+      label: locale.locale === "sv" ? "Koncept" : "Concept",
+    },
+    {
+      href: `${locale.locale}/#bakgrund`,
+      label: locale.locale === "sv" ? "Bakgrund" : "Background",
+    },
+    {
+      href: `${locale.locale}/pitch`,
+      label: locale.locale === "sv" ? "Varför oss?" : "Why us?",
+    },
+    {
+      href: `${locale.locale}/foerbaettra-ditt-employer-branding`,
+      label: locale.locale === "sv" ? "Employer branding" : "Employer Branding",
+    },
+    {
+      href: `${locale.locale}/#tjanster`,
+      label: locale.locale === "sv" ? "Tjänster" : "Services",
+    },
+    {
+      href: `${locale.locale}/#kontakt`,
+      label: locale.locale === "sv" ? "Kontakt" : "Contact",
+    },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 20);
     };
-
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <>
-      <button
-        onClick={handleOpen}
-        className="bg-white z-50 rounded-full p-2 m-4 absolute right-2 block lg:hidden "
-      >
-        {open ? (
-          <IoClose color="#172D32" fontSize={30} />
-        ) : (
-          <LuMenu fontSize={30} color="#172D32" />
-        )}
-      </button>
-      <div
-        className={`absolute h-[100vh] right-0 w-full top-0 bg-[#3d52a0] transition-all duration-300 z-30 lg:hidden flex-col p-10 ${!open ? "translate-x-full hidden" : "translate-x-0 flex"
-          } `}
-      >
-        <Link onClick={handleOpen} href={`/${locale.locale}`}>
-          <Image
-            src={settings?.logo?.filename || ""}
-            width={100}
-            height={120}
-            alt="WorkingProgress"
-          />
-        </Link>
-        <div className="flex flex-col gap-2 mt-10 text-white text-xl">
-          <Link onClick={handleOpen} href={`/${locale.locale}/koncept`}>
-            {locale.locale === "sv" ? "Koncept" : "Concept"}
-          </Link>
+    <header
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+        isScrolled ? "bg-[#172645] backdrop-blur-md shadow-sm py-4" : "bg-transparent py-6"
+      )}
+    >
+      <div className="container flex items-center justify-between">
+        <a href="/" className="flex items-center gap-2">
+          <img src={settings?.logo?.filename || ""} width={80} height={120} alt="WorkingProgress" />
+        </a>
 
-          <Link onClick={handleOpen} href={`/${locale.locale}/foerbaettra-ditt-employer-branding`}>
-            Employer Branding
-          </Link>
-          <Link onClick={handleOpen} href={`/${locale.locale}/pitch`}>{locale.locale === "sv" ? "Varför oss?" : "Why us"}</Link>
-          <Link onClick={handleOpen} href={`/${locale.locale}/#bakgrund`}>{locale.locale === "sv" ? "Bakgrund" : "Background"}</Link>
-          <Link onClick={handleOpen} href={`/${locale.locale}/#services`}>{locale.locale === "sv" ? "Tjänster" : "Services"}</Link>
-          <Link onClick={handleOpen} href={`/${locale.locale}/#form`}>{locale.locale === "sv" ? "Kontakta oss" : "Contact us"}</Link>
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className={cn(
+                "text-sm font-medium transition-colors relative group",
+                isScrolled ? "text-white hover:text-foreground" : "text-white/70 hover:text-white"
+              )}
+            >
+              {link.label}
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full" />
+            </a>
+          ))}
+          <Button variant="accent" size="sm">
+            {locale.locale === "sv" ? "Boka möte" : "Schedule Meeting"}
+          </Button>
+
           <div className="flex gap-2 items-center">
-            <Link onClick={handleOpen} href="/sv" className="flex text-[#fff] medium text-[20px]">
-              <Image src="https://a.storyblok.com/f/318037/1600x1000/84f5e65ba6/sweden.svg" width={40} height={40} alt="sweden" />
-            </Link>
-            <Link href="/en" onClick={handleOpen} className="flex text-[#fff] medium text-[20px]">
-              <Image src="https://a.storyblok.com/f/318037/330x165/e463380fe6/flag_of_the_united_kingdom-svg.webp" width={45} height={50} alt="sweden" />
-            </Link>
+            <button
+              onClick={() => setLanguage("sv")}
+              className={cn(
+                "flex transition-opacity",
+                locale.locale === "sv" ? "opacity-100" : "opacity-50 hover:opacity-75"
+              )}
+            >
+              <img
+                src="https://a.storyblok.com/f/318037/1600x1000/84f5e65ba6/sweden.svg"
+                width={40}
+                height={40}
+                alt="Swedish"
+              />
+            </button>
+            <button
+              onClick={() => setLanguage("en")}
+              className={cn(
+                "flex transition-opacity",
+                locale.locale === "en" ? "opacity-100" : "opacity-50 hover:opacity-75"
+              )}
+            >
+              <img
+                src="https://a.storyblok.com/f/318037/330x165/e463380fe6/flag_of_the_united_kingdom-svg.webp"
+                width={45}
+                height={50}
+                alt="English"
+              />
+            </button>
           </div>
-        </div>
+        </nav>
+
+        <button
+          className={cn("md:hidden p-2 transition-colors", isScrolled ? "text-foreground" : "text-white")}
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle menu"
+        >
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
       </div>
+
       <div
-        className={`fixed hidden lg:block w-full py-10 z-50 transition-all duration-300 ${scrolled ? "bg-[#3d52a0] py-5 items-center" : "bg-transparent"
-          }`}
+        className={cn(
+          "md:hidden absolute top-full left-0 right-0 bg-background/98 backdrop-blur-md border-b border-border transition-all duration-300 overflow-hidden",
+          isOpen ? "max-h-80 py-6" : "max-h-0 py-0"
+        )}
       >
-        <div className="flex justify-between container">
-          <Link href={`/${locale.locale}`}>
-            <Image
-              src={settings?.logo?.filename || ""}
-              width={scrolled ? 100 : 170}
-              height={scrolled ? 70 : 120}
-              alt="WorkingProgress"
-            />
-          </Link>
-
-          <div
-            className={`flex ${scrolled ? "items-center text-lg" : "items-center"
-              } gap-5 font-semibold uppercase lg:text-[#ede8f5]`}
-          >
-            <Link href={`/${locale.locale}/koncept`}>
-              {locale.locale === "sv" ? "Koncept" : "Concept"}
-            </Link>
-
-            <Link href={`/${locale.locale}/foerbaettra-ditt-employer-branding`}>
-              Employer Branding
-            </Link>
-            <Link href={`/${locale.locale}/pitch`}>{locale.locale === "sv" ? "Varför oss?" : "Why us"}</Link>
-            <Link href={`/${locale.locale}/#bakgrund`}>{locale.locale === "sv" ? "Bakgrund" : "Background"}</Link>
-            <Link href={`/${locale.locale}/#services`}>{locale.locale === "sv" ? "Tjänster" : "Services"}</Link>
-            <Link href={`/${locale.locale}/#form`}>{locale.locale === "sv" ? "Kontakta oss" : "Contact us"}</Link>
-            <div className="flex gap-2 items-center">
-              <Link href="/sv" className="flex text-[#fff] medium text-[20px]">
-                <Image src="https://a.storyblok.com/f/318037/1600x1000/84f5e65ba6/sweden.svg" width={40} height={40} alt="sweden" />
-              </Link>
-              <Link href="/en" className="flex text-[#fff] medium text-[20px]">
-                <Image src="https://a.storyblok.com/f/318037/330x165/e463380fe6/flag_of_the_united_kingdom-svg.webp" width={45} height={50} alt="sweden" />
-              </Link>
-            </div>
-          </div>
-        </div>
+        <nav className="container flex flex-col gap-4">
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="text-base font-medium text-muted-foreground hover:text-foreground transition-colors py-2"
+              onClick={() => setIsOpen(false)}
+            >
+              {link.label}
+            </a>
+          ))}
+          <Button variant="accent" className="mt-2">
+            {locale.locale === "sv" ? "Boka möte" : "Schedule Meeting"}
+          </Button>
+        </nav>
       </div>
-    </>
+    </header>
   );
-};
+}

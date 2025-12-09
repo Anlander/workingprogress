@@ -1,148 +1,197 @@
-@import url("https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-$bg: #3d52a0;
-$small-grey: #8597c4;
-$lighther-blue: #adbbda;
-$text-color: #ede8f5;
+/* WorkingProgress Design System - Scandinavian Minimalism */
 
-html,
-body {
-  scroll-behavior: smooth;
-  overflow-x: hidden;
-}
+@layer base {
+  :root {
+    /* Core palette - Deep navy & warm coral */
+    --background: 0 0% 100%;
+    --foreground: 220 30% 15%;
 
-footer {
-  background-color: $bg;
-  color: white;
-  padding: 20px 0;
-  text-align: center;
-}
+    --card: 220 20% 98%;
+    --card-foreground: 220 30% 15%;
 
-h1,
-h2,
-button {
-  font-family: "Cabin", serif;
-}
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 30% 15%;
 
-h1 {
-  font-size: 45px;
-}
+    /* Deep navy primary */
+    --primary: 220 50% 18%;
+    --primary-foreground: 0 0% 100%;
 
-.button {
-  font-size: 16px;
-  padding: 5px 15px;
-  border-radius: 9px;
-  background: $bg;
-  color: white;
-  cursor: pointer;
-}
+    /* Light warm grey secondary */
+    --secondary: 30 10% 96%;
+    --secondary-foreground: 220 30% 15%;
 
-h3,
-h4,
-h5,
-p,
-a,
-span {
-  font-family: "Raleway", serif;
-  letter-spacing: 0.5px;
-}
+    /* Muted tones */
+    --muted: 220 15% 95%;
+    --muted-foreground: 220 10% 50%;
 
-h1 {
-  font-size: 55px;
-  line-height: 60px;
-  @media screen and (max-width: 768px) {
-    font-size: 32px;
-    line-height: 45px;
+    /* Warm coral accent */
+    --accent: 12 80% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 20% 90%;
+    --input: 220 20% 90%;
+    --ring: 12 80% 60%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+    --gradient-hero: linear-gradient(135deg, hsl(220 50% 18%) 0%, hsl(220 40% 28%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(12 80% 60%) 0%, hsl(20 85% 55%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(220 20% 98%) 0%, hsl(0 0% 100%) 100%);
+
+    --shadow-sm: 0 2px 8px -2px hsl(220 30% 15% / 0.08);
+    --shadow-md: 0 8px 24px -4px hsl(220 30% 15% / 0.12);
+    --shadow-lg: 0 16px 48px -8px hsl(220 30% 15% / 0.15);
+    --shadow-glow: 0 0 40px hsl(12 80% 60% / 0.2);
+
+    /* Sidebar (keeping for compatibility) */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 12 80% 60%;
+  }
+
+  .dark {
+    --background: 220 30% 8%;
+    --foreground: 220 15% 95%;
+
+    --card: 220 25% 12%;
+    --card-foreground: 220 15% 95%;
+
+    --popover: 220 25% 12%;
+    --popover-foreground: 220 15% 95%;
+
+    --primary: 220 15% 95%;
+    --primary-foreground: 220 30% 8%;
+
+    --secondary: 220 20% 18%;
+    --secondary-foreground: 220 15% 95%;
+
+    --muted: 220 20% 18%;
+    --muted-foreground: 220 10% 60%;
+
+    --accent: 12 80% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 20% 20%;
+    --input: 220 20% 20%;
+    --ring: 12 80% 60%;
+
+    --sidebar-background: 220 30% 8%;
+    --sidebar-foreground: 220 15% 95%;
+    --sidebar-primary: 12 80% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 20% 15%;
+    --sidebar-accent-foreground: 220 15% 95%;
+    --sidebar-border: 220 20% 18%;
+    --sidebar-ring: 12 80% 60%;
   }
 }
 
-.mobile {
-  p {
-    font-size: 14px;
-    padding: 0 10px;
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sora antialiased;
   }
 }
 
-h4 {
-  font-size: 16px;
-}
+@layer components {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-accent);
+  }
 
-p {
-  font-size: 20px;
-}
+  .hover-lift {
+    @apply transition-all duration-300 ease-out;
+  }
 
-.container {
-  max-width: 80%;
-  margin: 0 auto;
-}
+  .hover-lift:hover {
+    @apply -translate-y-1;
+    box-shadow: var(--shadow-lg);
+  }
 
-.rendered-content {
-  color: $text-color;
-  p {
-    font-size: 28px;
-    line-height: 35px;
+  .section-padding {
+    @apply py-20 md:py-28 lg:py-32;
+  }
+
+  .container-narrow {
+    @apply max-w-5xl mx-auto px-6;
   }
 }
 
-.text-color {
-  color: $text-color;
+@layer utilities {
+  .animate-fade-up {
+    animation: fadeUp 0.8s ease-out forwards;
+  }
+
+  .animate-fade-up-delay-1 {
+    animation: fadeUp 0.8s ease-out 0.1s forwards;
+    opacity: 0;
+  }
+
+  .animate-fade-up-delay-2 {
+    animation: fadeUp 0.8s ease-out 0.2s forwards;
+    opacity: 0;
+  }
+
+  .animate-fade-up-delay-3 {
+    animation: fadeUp 0.8s ease-out 0.3s forwards;
+    opacity: 0;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
 }
 
-.notActive {
-  color: $bg;
-  background-color: $lighther-blue;
-}
-
-.active {
-  color: $text-color;
-  background-color: $bg;
-}
 
 .render-content {
   display: flex;
   flex-direction: column;
-  color: #121212;
-  gap: 10px;
-
-  a {
-    color: $lighther-blue;
-    transition: all 300ms ease-in-out;
-    &:hover {
-      color: $bg;
-    }
-  }
-
-  ul {
-    list-style: circle;
-
-    padding: 0;
-    margin: 0;
-    li {
-      margin: 0px 0px 5px 20px;
-    }
-  }
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  label {
-    padding: 10px 0;
-    color: $small-grey;
-  }
-  input,
-  textarea {
-    font-size: 16px;
-    border-radius: 9px;
-    padding: 10px 20px;
-    border: 1px solid $bg;
-  }
-  textarea {
-    width: 100%;
-  }
+  gap: 1.5rem;
 }
