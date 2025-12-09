@@ -39,23 +39,23 @@ export function Nav({ settings, locale }: { settings: any; locale: { locale: str
       label: locale.locale === "sv" ? "Koncept" : "Concept",
     },
     {
-      href: `${locale.locale}/#bakgrund`,
+      href: `/#bakgrund`,
       label: locale.locale === "sv" ? "Bakgrund" : "Background",
     },
     {
-      href: `${locale.locale}/pitch`,
+      href: `/pitch`,
       label: locale.locale === "sv" ? "Varför oss?" : "Why us?",
     },
     {
-      href: `${locale.locale}/foerbaettra-ditt-employer-branding`,
+      href: `/foerbaettra-ditt-employer-branding`,
       label: locale.locale === "sv" ? "Employer branding" : "Employer Branding",
     },
     {
-      href: `${locale.locale}/#tjanster`,
+      href: `/#tjanster`,
       label: locale.locale === "sv" ? "Tjänster" : "Services",
     },
     {
-      href: `${locale.locale}/#kontakt`,
+      href: `/#kontakt`,
       label: locale.locale === "sv" ? "Kontakt" : "Contact",
     },
   ];
