@@ -39,20 +39,24 @@ export function HeroSection({ blok, locale }: any) {
           </p>
 
           <div className="animate-fade-up-delay-3 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button
-              variant="accent"
-              size="xl"
-              className="group"
-            >
-              {locale === 'sv' ? 'Boka ett möte' : 'Schedule a Meeting'}
-              <ArrowRight className="ml-2 transition-transform group-hover:translate-x-1" size={20} />
-            </Button>
-            <Button
-              size="xl"
-              className="border-2 border-white/20 bg-transparent text-white hover:bg-white hover:text-primary hover:-translate-y-1 hover:shadow-xl"
-            >
-              {locale === 'sv' ? 'Läs mer om oss' : 'Read more about us'}
-            </Button>
+            <a href="#kontakt">
+              <Button
+                variant="accent"
+                size="xl"
+                className="group"
+              >
+                {locale === 'sv' ? 'Boka ett möte' : 'Schedule a Meeting'}
+                <ArrowRight className="ml-2 transition-transform group-hover:translate-x-1" size={20} />
+              </Button>
+            </a>
+            <a href="#bakgrund">
+              <Button
+                size="xl"
+                className="border-2 border-white/20 bg-transparent text-white hover:bg-white hover:text-primary hover:-translate-y-1 hover:shadow-xl"
+              >
+                {locale === 'sv' ? 'Läs mer om oss' : 'Read more about us'}
+              </Button>
+            </a>
           </div>
         </div>
       </div>
