@@ -25,24 +25,16 @@ export function Footer({ locale }: { locale?: string }) {
             <h4 className="font-semibold mb-4">{isSwedish ? "Tjänster" : "Services"}</h4>
             <ul className="space-y-2 text-primary-foreground/70">
               <li>
-                <a href="#" className="hover:text-accent transition-colors">
-                  {isSwedish ? "Medarbetarundersökningar" : "Employee Surveys"}
-                </a>
+                {isSwedish ? "Medarbetarundersökningar" : "Employee Surveys"}
               </li>
               <li>
-                <a href="#" className="hover:text-accent transition-colors">
-                  {isSwedish ? "Pulsmätningar" : "Pulse Surveys"}
-                </a>
+                {isSwedish ? "Pulsmätningar" : "Pulse Surveys"}
               </li>
               <li>
-                <a href="#" className="hover:text-accent transition-colors">
-                  Employer Branding
-                </a>
+                Employer Branding
               </li>
               <li>
-                <a href="#" className="hover:text-accent transition-colors">
-                  {isSwedish ? "Rekryteringsstöd" : "Recruitment Support"}
-                </a>
+                {isSwedish ? "Rekryteringsstöd" : "Recruitment Support"}
               </li>
             </ul>
           </div>

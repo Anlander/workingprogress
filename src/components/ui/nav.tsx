@@ -80,7 +80,6 @@ export function Nav({ settings, locale }: { settings: any; locale: { locale: str
           <img src={settings?.logo?.filename || ""} width={80} height={120} alt="WorkingProgress" />
         </a>
 
-        {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
@@ -88,16 +87,18 @@ export function Nav({ settings, locale }: { settings: any; locale: { locale: str
               href={link.href}
               className={cn(
                 "text-sm font-medium transition-colors relative group",
-                isScrolled ? "text-white hover:text-foreground" : "text-white/70 hover:text-white"
+                isScrolled ? "text-white hover:text-white/70" : "text-white/70 hover:text-white"
               )}
             >
               {link.label}
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
-          <Button variant="accent" size="sm">
-            {locale.locale === "sv" ? "Boka möte" : "Schedule Meeting"}
-          </Button>
+          <a href="/#kontakt">
+            <Button variant="accent" size="sm">
+              {locale.locale === "sv" ? "Boka möte" : "Schedule Meeting"}
+            </Button>
+          </a>
 
           <div className="flex gap-2 items-center">
             <button
