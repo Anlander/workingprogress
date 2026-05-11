@@ -69,8 +69,8 @@ export function Form({ blok, locale }: any) {
                 </div>
                 <div>
                   <div className="text-sm text-muted-foreground">{locale === "sv" ? "E-post" : "Email"}</div>
-                  <a href="mailto:info@workingprogress.se" className="text-foreground font-medium hover:text-accent transition-colors">
-                    info@workingprogress.se
+                  <a href="mailto:maximilianworkingprogress@gmail.com" className="text-foreground font-medium hover:text-accent transition-colors">
+                    maximilianworkingprogress@gmail.com
                   </a>
                 </div>
               </div>
@@ -81,8 +81,8 @@ export function Form({ blok, locale }: any) {
                 </div>
                 <div>
                   <div className="text-sm text-muted-foreground">{locale === "sv" ? "Telefon" : "Phone"}</div>
-                  <a href="tel:+46701234567" className="text-foreground font-medium hover:text-accent transition-colors">
-                    +46 70 123 45 67
+                  <a href="tel:+46725868280" className="text-foreground font-medium hover:text-accent transition-colors">
+                    +46725868280
                   </a>
                 </div>
               </div>
